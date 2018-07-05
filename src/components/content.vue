@@ -284,7 +284,7 @@ ${this.form.expect}
 ${this.form.actual}
 `.trim() : `
 
-### Description
+### 描述
 ${this.form.desc}
 `.trim()
         this.show = true
