@@ -33,6 +33,9 @@
             el-form-item(:label="contents.versionBrowserHint", prop="versionBrowser")
               el-input(v-model="form.versionBrowser")
 
+            el-form-item(:label="contents.versionWechatHint", prop="versionWechat")
+              el-input(v-model="form.versionWechat")
+
             // el-form-item(:label="contents.versionVueHint", prop="versionVue")
             //   el-select.block(v-model="form.versionVue", filterable, :loading="loading.vue", :no-match-text="contents.noMatchText", :no-data-text="contents.noDataText", placeholder="")
             //     el-option(v-for="tag in version.vue", :label="tag", :value="tag", :key="tag")
@@ -60,13 +63,6 @@
               el-input(type="textarea", v-model="form.actual", :autosize="{ minRows: 5, maxRows: 10 }")
 
           template(v-else)
-            el-form-item(:label="contents.existingComponentHint", prop="existingComponent")
-              el-radio(v-model="form.existingComponent", :label="true") {{ contents.existingComponentYes }}
-              el-radio(v-model="form.existingComponent", :label="false") {{ contents.existingComponentNo }}
-
-            el-form-item(:label="contents.componentNameHint", prop="componentName")
-              el-input(v-model="form.componentName")
-
             el-form-item(:label="contents.descHint", prop="desc")
               el-input(type="textarea", v-model="form.desc", :autosize="{ minRows: 5, maxRows: 10 }")
 
@@ -269,26 +265,24 @@ ${comment}
 
       createIssue () {
         this.issue = this.isBug ? `
-### ${this.form.repo} version
+### ${this.form.repo} 版本
 ${this.form.versionRepository}
 
-### OS/Browsers version
+### 对应工具或者iOS或者Andriod的版本号
 ${this.form.versionBrowser}
 
-### Steps to reproduce
+### 微信版本号
+${this.form.versionWechat}
+
+### 重现步骤
 ${this.form.steps}
 
-### What is Expected?
+### 期待的行为
 ${this.form.expect}
 
-### What is actually happening?
+### 实际的行为
 ${this.form.actual}
 `.trim() : `
-### Existing Component
-${this.form.existingComponent ? this.contents.existingComponentYes : this.contents.existingComponentNo}
-
-### Component Name
-${this.form.componentName}
 
 ### Description
 ${this.form.desc}
