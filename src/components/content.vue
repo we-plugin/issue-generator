@@ -33,19 +33,19 @@
             el-form-item(:label="contents.versionBrowserHint", prop="versionBrowser")
               el-input(v-model="form.versionBrowser")
 
-            el-form-item(:label="contents.versionVueHint", prop="versionVue")
-              el-select.block(v-model="form.versionVue", filterable, :loading="loading.vue", :no-match-text="contents.noMatchText", :no-data-text="contents.noDataText", placeholder="")
-                el-option(v-for="tag in version.vue", :label="tag", :value="tag", :key="tag")
+            // el-form-item(:label="contents.versionVueHint", prop="versionVue")
+            //   el-select.block(v-model="form.versionVue", filterable, :loading="loading.vue", :no-match-text="contents.noMatchText", :no-data-text="contents.noDataText", placeholder="")
+            //     el-option(v-for="tag in version.vue", :label="tag", :value="tag", :key="tag")
 
-            el-form-item(:label="contents.reproduceHint", prop="reproduce")
-              el-input(v-model="form.reproduce")
+            // el-form-item(:label="contents.reproduceHint", prop="reproduce")
+            //   el-input(v-model="form.reproduce")
 
-            el-form-item
-              small
-                p(v-text="contents.reproduceHintSamll")
-                ul
-                  li(v-for="l in contents.reproduceLinks")
-                    a(:href="l.link", v-text="l.name")
+            // el-form-item
+            //   small
+            //     p(v-text="contents.reproduceHintSamll")
+            //     ul
+            //       li(v-for="l in contents.reproduceLinks")
+            //         a(:href="l.link", v-text="l.name")
 
             el-form-item(:label="contents.stepsHint", prop="steps")
               el-input(type="textarea", v-model="form.steps", :autosize="{ minRows: 5, maxRows: 10 }")
@@ -121,8 +121,8 @@
           type: '',
           desc: '',
           versionRepository: '',
-          versionVue: '',
-          versionBrowser: '',
+          // versionVue: '',
+          // versionBrowser: '',
           reproduce: '',
           steps: '',
           expected: '',
@@ -157,8 +157,8 @@
 
       api () {
         return {
-          repositoryVersion: `https://registry.npm.taobao.org/${this.repo && this.repo.npm}`,
-          vueVersion: 'https://registry.npm.taobao.org/vue'
+          repositoryVersion: `https://registry.npm.taobao.org/${this.repo && this.repo.npm}`
+          // vueVersion: 'https://registry.npm.taobao.org/vue'
         }
       },
 
@@ -275,12 +275,6 @@ ${this.form.versionRepository}
 ### OS/Browsers version
 ${this.form.versionBrowser}
 
-### Vue version
-${this.form.versionVue}
-
-### Reproduction Link
-[${this.form.reproduce}](${this.form.reproduce})
-
 ### Steps to reproduce
 ${this.form.steps}
 
@@ -316,7 +310,7 @@ ${this.form.desc}
     },
 
     mounted () {
-      this.fetchVueVersion()
+      // this.fetchVueVersion()
     }
   }
 </script>
